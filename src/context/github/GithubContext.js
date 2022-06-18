@@ -16,6 +16,7 @@ export const GithubProvider = ({children}) => {
 
 
     //Search random users (Testing Puropses)
+    /*
     const fetchUser = async () => {
     setLoading()
     const response = await fetch(`${GITHUB_URL}users`, {
@@ -31,12 +32,36 @@ export const GithubProvider = ({children}) => {
         payload: data
       })
   }
+  */
+
+  //Search user
+   const getUsers = async (text) => {
+    setLoading()
+
+    const params = new URLSearchParams({
+      q: text
+    })
+
+    const response = await fetch(`${GITHUB_URL}search/users?${params}`,
+     {
+        headers: {
+          Authorization: `token ${GITHUB_TOKEN}`
+        }
+      })
+
+      const {items} = await response.json()
+
+      dispatch({
+        type: 'GET_USERS',
+        payload: items
+      })
+  }
   const setLoading = () => dispatch({type: 'SET_LOADING'})
 
   return <GithubContext.Provider value={{
             users: state.users,
             loading: state.loading,
-            fetchUser
+            getUsers
             }}>
     {children}
   </GithubContext.Provider>
