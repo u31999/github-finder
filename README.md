@@ -12,5 +12,6 @@
 - Tailwindcss
 - Daisyui
 
-* Daisyui ia a Free and open-source Tailwind CSS component library
-* [vist Daisyui website](https://daisyui.com/)
+> Daisyui ia a Free and open-source Tailwind CSS component library
+>
+> > [vist Daisyui website](https://daisyui.com/)
